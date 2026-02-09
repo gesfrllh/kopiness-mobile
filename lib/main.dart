@@ -7,6 +7,9 @@ import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AppInitializer.init();
+  final authStore = AuthStore();
+  await authStore.restoreLogin();
+
   runApp(
     MultiProvider(
       providers: [ChangeNotifierProvider(create: (_) => AuthStore())],
