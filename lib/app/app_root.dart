@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kopiness/core/app/app_messanger.dart';
 import 'package:kopiness/features/auth/pages/auth/login_page.dart';
 import 'package:kopiness/features/auth/store/auth_store.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +17,7 @@ class AppRoot extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light(),
       initialRoute: '/',
+      scaffoldMessengerKey: scaffoldMessengerKey,
       onGenerateRoute: (settings) {
         /// 🔐 GUARD DASHBOARD
         if (settings.name == '/dashboard' && !authStore.isLoggedIn) {
