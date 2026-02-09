@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kopiness/core/utils/notifier.dart';
 import 'package:kopiness/features/auth/service/auth_service.dart';
 import 'package:kopiness/features/auth/store/auth_store.dart';
 import 'package:kopiness/features/dashboard/pages/dashboard_page.dart';
@@ -36,15 +37,13 @@ class _LoginPageState extends State<LoginPage> {
 
     if (result != null && result.isLoggedIn) {
       await context.read<AuthStore>().login(result.data);
-
+      Notifier.success(context, 'Login Berhasil!');
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (_) => const DashboardPage()),
       );
     } else {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text('Login gagal')));
+      Notifier.error(context, 'Login Gagal!');
     }
   }
 
