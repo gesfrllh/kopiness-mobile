@@ -17,6 +17,7 @@ class AppRoot extends StatelessWidget {
       theme: ThemeData.light(),
       initialRoute: '/',
       onGenerateRoute: (settings) {
+        /// 🔐 GUARD DASHBOARD
         if (settings.name == '/dashboard' && !authStore.isLoggedIn) {
           return MaterialPageRoute(builder: (_) => const LoginPage());
         }
@@ -28,10 +29,13 @@ class AppRoot extends StatelessWidget {
                   ? const DashboardPage()
                   : const LoginPage(),
             );
-          case '/dashboard':
-            return MaterialPageRoute(builder: (_) => const DashboardPage());
+
           case '/login':
             return MaterialPageRoute(builder: (_) => const LoginPage());
+
+          case '/dashboard':
+            return MaterialPageRoute(builder: (_) => const DashboardPage());
+
           default:
             return MaterialPageRoute(
               builder: (_) =>

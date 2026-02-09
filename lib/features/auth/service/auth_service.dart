@@ -1,28 +1,44 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+class LoginResult {
+  final bool isLoggedIn;
+  final Map<String, dynamic> data;
+
+  LoginResult({required this.isLoggedIn, required this.data});
+
+  factory LoginResult.fromJson(Map<String, dynamic> json) {
+    final data = json['data'] ?? {};
+
+    return LoginResult(isLoggedIn: data['isLoggedIn'] ?? false, data: data);
+  }
+}
 
 class AuthService {
   final Dio _dio = Dio(
     BaseOptions(
-      baseUrl:
-          'http://localhost:7243/api'
-          '',
+      baseUrl: 'https://9f31-121-100-17-195.ngrok-free.app/api',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      validateStatus: (status) => status != null && status < 500,
     ),
   );
 
-  Future<bool> login(String email, String password) async {
+  /// 🔥 RETURN LoginResult, BUKAN MAP
+  Future<LoginResult?> login(String email, String password) async {
     try {
       final response = await _dio.post(
         '/auth/login',
         data: {'email': email, 'password': password},
       );
 
-      if (response.statusCode == 200) {
-        return response.data['isLoggedIn'] ?? false;
+      if (response.statusCode == 201) {
+        return LoginResult.fromJson(response.data);
       }
     } catch (err) {
-      print('Login Error: ${err}');
+      print('Login Error: $err');
     }
-    return false;
+    return null;
   }
 }

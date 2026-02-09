@@ -27,23 +27,24 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _submit() async {
-    if (_formKey.currentState!.validate()) {
-      final email = emailController.text;
-      final password = passwordController.text;
+    if (!_formKey.currentState!.validate()) return;
 
-      final success = await AuthService().login(email, password);
+    final email = emailController.text;
+    final password = passwordController.text;
 
-      if (success) {
-        Provider.of<AuthStore>(context, listen: false).login();
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (_) => const DashboardPage()),
-        );
-      } else {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(const SnackBar(content: Text('Login Gagal')));
-      }
+    final result = await AuthService().login(email, password);
+
+    if (result != null && result.isLoggedIn) {
+      await context.read<AuthStore>().login(result.data);
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const DashboardPage()),
+      );
+    } else {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Login gagal')));
     }
   }
 
