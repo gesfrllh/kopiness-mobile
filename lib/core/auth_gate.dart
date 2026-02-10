@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kopiness/features/auth/pages/auth/login_page.dart';
-import 'package:kopiness/features/auth/store/auth_store.dart';
-import 'package:kopiness/features/dashboard/pages/dashboard_page.dart';
+import 'package:kopiness/ui/pages/login_page.dart';
+import 'package:kopiness/core/stores/auth_store.dart';
+import 'package:kopiness/ui/pages/dashboard_page.dart';
 import 'package:provider/provider.dart';
 
 class AuthGate extends StatefulWidget {

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:kopiness/core/utils/notifier.dart';
-import 'package:kopiness/features/auth/service/auth_service.dart';
-import 'package:kopiness/features/auth/store/auth_store.dart';
-import 'package:kopiness/features/dashboard/pages/dashboard_page.dart';
-import 'package:kopiness/shared/widgets/app_text_field.dart';
-import 'package:kopiness/shared/widgets/app_button.dart';
-import 'package:kopiness/shared/theme/app_colors.dart';
+import 'package:kopiness/core/services/auth_service.dart';
+import 'package:kopiness/core/stores/auth_store.dart';
+// import 'package:kopiness/ui/pages/dashboard_page.dart';
+import 'package:kopiness/ui/atoms/app_text_field.dart';
+import 'package:kopiness/ui/atoms/app_button.dart';
+import 'package:kopiness/core/theme/app_colors.dart';
 import 'package:provider/provider.dart';
+import 'package:kopiness/ui/pages/main_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -40,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
       Notifier.success(context, 'Login Berhasil!');
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const DashboardPage()),
+        MaterialPageRoute(builder: (_) => const MainPage()),
       );
     } else {
       Notifier.error(context, 'Login Gagal!');
