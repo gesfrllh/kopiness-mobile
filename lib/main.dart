@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'bootstrap/app_initializer.dart';
 import 'package:kopiness/app/app_root.dart';
-import 'package:kopiness/features/auth/store/auth_store.dart';
+import 'package:kopiness/core/stores/auth_store.dart';
 import 'package:provider/provider.dart';
 
 void main() async {

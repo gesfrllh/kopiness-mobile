@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kopiness/features/auth/pages/auth/login_page.dart';
+import 'package:kopiness/ui/pages/login_page.dart';
+import 'package:kopiness/ui/theme/app_theme.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -10,6 +11,7 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Clean App',
       home: LoginPage(),
+      theme: AppTheme.light,
     );
   }
 }

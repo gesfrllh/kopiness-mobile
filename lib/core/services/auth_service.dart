@@ -16,7 +16,7 @@ class LoginResult {
 class AuthService {
   final Dio _dio = Dio(
     BaseOptions(
-      baseUrl: 'https://9f31-121-100-17-195.ngrok-free.app/api',
+      baseUrl: 'https://c0b8-121-100-17-195.ngrok-free.app/api',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',

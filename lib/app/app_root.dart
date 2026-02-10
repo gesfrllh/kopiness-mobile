@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:kopiness/core/app/app_messanger.dart';
-import 'package:kopiness/features/auth/pages/auth/login_page.dart';
-import 'package:kopiness/features/auth/store/auth_store.dart';
+import 'package:kopiness/core/app_messanger.dart';
+import 'package:kopiness/ui/pages/login_page.dart';
+import 'package:kopiness/core/stores/auth_store.dart';
 import 'package:provider/provider.dart';
-import 'package:kopiness/features/dashboard/pages/dashboard_page.dart';
+import 'package:kopiness/ui/pages/main_page.dart';
 
 class AppRoot extends StatelessWidget {
   const AppRoot({super.key});
@@ -27,16 +27,15 @@ class AppRoot extends StatelessWidget {
         switch (settings.name) {
           case '/':
             return MaterialPageRoute(
-              builder: (_) => authStore.isLoggedIn
-                  ? const DashboardPage()
-                  : const LoginPage(),
+              builder: (_) =>
+                  authStore.isLoggedIn ? const MainPage() : const LoginPage(),
             );
 
           case '/login':
             return MaterialPageRoute(builder: (_) => const LoginPage());
 
-          case '/dashboard':
-            return MaterialPageRoute(builder: (_) => const DashboardPage());
+          case '/main':
+            return MaterialPageRoute(builder: (_) => const MainPage());
 
           default:
             return MaterialPageRoute(
