@@ -155,7 +155,10 @@ class _LoginPageState extends State<LoginPage> {
                             'https://developers.google.com/identity/images/g-logo.png',
                             width: 18,
                           ),
-                          label: const Text('Sign up with Google'),
+                          label: const Text(
+                            'Sign up with Google',
+                            style: TextStyle(color: AppColors.primary),
+                          ),
                           style: OutlinedButton.styleFrom(
                             minimumSize: const Size.fromHeight(48),
                             side: BorderSide(color: AppColors.primary),

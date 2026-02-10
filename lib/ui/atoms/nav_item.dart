@@ -34,12 +34,14 @@ class NavItem extends StatelessWidget {
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: active ? primary.withOpacity(0.15) : Colors.transparent,
+                color: active
+                    ? AppColors.primary.withOpacity(0.15)
+                    : Colors.transparent,
               ),
               child: Icon(
                 icon,
                 size: 24,
-                color: active ? primary : Colors.grey,
+                color: active ? AppColors.primary : Colors.grey,
               ),
             ),
 
@@ -54,7 +56,7 @@ class NavItem extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 11,
                   fontWeight: active ? FontWeight.w600 : FontWeight.w400,
-                  color: active ? primary : Colors.grey,
+                  color: active ? AppColors.primary : Colors.grey,
                 ),
               ),
             ),
