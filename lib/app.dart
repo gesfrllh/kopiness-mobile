@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:kopiness/ui/pages/login_page.dart';
-import 'package:kopiness/ui/theme/app_theme.dart';
+
+class AppColors {
+  static const primary = Color(0xFF8B4513); // kopi vibes
+  static const border = Color(0xFFD0D5DD);
+  static const textGrey = Color(0xFF667085);
+  static const disabled = Color(0xFFB0B5BD);
+}
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -10,8 +15,22 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Clean App',
-      home: LoginPage(),
-      theme: AppTheme.light,
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Login Page')),
+        body: Center(
+          child: ElevatedButton(onPressed: () {}, child: const Text('Button')),
+        ),
+      ),
+      theme: ThemeData(
+        // ignore: deprecated_member_us
+        // primaryColor: Colors.grey.withOpacity(0.5),
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary)
+            .copyWith(
+              primary: AppColors.primary,
+              secondary: AppColors.primary, // optional
+            ),
+      ),
     );
   }
 }

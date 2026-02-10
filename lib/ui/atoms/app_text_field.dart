@@ -39,8 +39,8 @@ class _AppTextFieldState extends State<AppTextField> {
               TextSpan(
                 text: widget.label,
                 style: widget.required
-                    ? TextStyle(color: Colors.black)
-                    : TextStyle(color: Colors.red),
+                    ? const TextStyle(color: Colors.black)
+                    : const TextStyle(color: Colors.red),
                 children: widget.required
                     ? const [
                         TextSpan(
@@ -51,8 +51,18 @@ class _AppTextFieldState extends State<AppTextField> {
                     : [],
               ),
             ),
-            // hintText: widget,
-            border: const OutlineInputBorder(),
+            border: OutlineInputBorder(
+              borderSide: BorderSide(color: AppColors.border),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: AppColors.border),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: AppColors.primary, width: 2),
+              borderRadius: BorderRadius.circular(8),
+            ),
             suffixIcon: widget.isPassword
                 ? IconButton(
                     onPressed: () {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kopiness/ui/atoms/app_button.dart';
 
 class ProductCart extends StatelessWidget {
   const ProductCart({super.key});
@@ -50,32 +51,33 @@ class ProductCart extends StatelessWidget {
 
           // ACTION ICON
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const [
-              Icon(Icons.edit, size: 18, color: Colors.blue),
-              SizedBox(width: 8),
-              Icon(Icons.delete, size: 18, color: Colors.red),
+              IconButton(
+                padding: EdgeInsets.zero,
+                onPressed: null,
+                icon: Icon(Icons.edit, color: Colors.blue),
+              ),
+              IconButton(
+                onPressed: null,
+                padding: EdgeInsets.zero,
+                icon: Icon(Icons.delete, color: Colors.red),
+              ),
             ],
           ),
 
           const SizedBox(height: 8),
 
           // BUTTON
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () {},
-              child: const Text('Keranjang'),
-            ),
-          ),
+          AppButton(label: 'Keranjang', onPressed: () {}),
 
           const SizedBox(height: 6),
 
-          SizedBox(
-            width: double.infinity,
-            child: OutlinedButton(
-              onPressed: () {},
-              child: const Text('Detail'),
-            ),
+          AppButton(
+            label: 'Detail',
+            onPressed: () {},
+            variant: AppButtonVariant.outline,
+            borderRadius: 12,
           ),
         ],
       ),
